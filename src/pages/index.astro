@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css"
 import {Image} from 'astro:assets';
-import heroImage from '../assets/heroimg.webp'
----
+import heroImage from '../assets/sculture1.webp'
+import logo from '../assets/logo_white.jpeg'
 
+---
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -13,31 +14,58 @@ import heroImage from '../assets/heroimg.webp'
 		<title>Astro</title>
 	</head>
 	<body>
-    <div class="flex gap-[20px] flex-col items-center">
+    <div class="flex flex-col items-center font-[Open_sans]">
       <!-- Bloque 1 -->
-      <div class="flex-col flex w-full grow h-screen bg-[#1A1A1A]">
+      <div class="flex-col flex w-full grow min-h-screen bg-[#1A1A1A] ">
         <div class="p-4 flex gap-[20px] flex-wrap">
 
           <div>
-            <p class="text-white text-3xl">
+            <p class="text-white text-3xl ">
             "Cultiva tu fuerza,<br>honra tu cuerpo"</p>
           </div>
 
           <div class="grow"></div>
 
           <div class="flex items-center">
-            <button class=" rounded-full p-2 bg-[#00b050] text-white"> 
+            <button class=" rounded-xl p-3 bg-[#00b050] text-white text-2xl"> 
               Pide por whatsapp
             </button>
           </div>
 
         </div> 
           <div class="grow w-auto flex justify-end">
-            <Image src={heroImage} alt="Hero Image" class="object-scale-[0.5] w-auto "/>
+            <Image src={heroImage} alt="Hero Image" class=" w-auto "/>
           </div>
 
       </div>
-      <div class="w-[250px] grow">2</div>
+      <!-- Bloque 2 -->
+      <!-- <div class="w-[250px] grow bg-[#1A1A1A] w-full"> -->
+      <!--   <div class="m-30 content-center justify-center"> -->
+      <!---->
+      <!--     <div class="grow  justify"> -->
+      <!--       <Image src={logo} alt="Hero Image" class="object-scale-down w-auto "/> -->
+      <!--     </div> -->
+      <!---->
+      <!--     <div class="flex flex-col text-white  "> -->
+      <!--       <p>Somos una marca de suplementos deportivos enfocada en ayudarte a alcanzar tu mejor versión.  </p> -->
+      <!--       <p>Seleccionamos productos de calidad, originales y con respaldo, para personas que buscan rendimiento, energía y salud real.</p> -->
+      <!--     </div> -->
+      <!--   </div> -->
+      <!-- </div> -->
+      <div class="w-full bg-[#1A1A1A] flex items-center justify-center">
+        <div class=" m-20 flex flex-col items-center text-white text-center space-y-4">
+          <Image src={logo} alt="Hero Image" class="object-scale-down w-auto" />
+          <div class="text-3xl">
+            <p>
+              Somos una marca de suplementos deportivos enfocada en ayudarte a alcanzar tu mejor versión.
+            </p>
+            <p>
+              Seleccionamos productos de calidad, originales y con respaldo, para personas que buscan rendimiento, energía y salud real.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="w-[250px] grow">3</div>
       <div class="w-[250px] grow">4</div>
     </div>
