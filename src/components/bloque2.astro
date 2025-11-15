@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import escultura2 from "../assets/imagenes/sculture2.png";
+import escultura1 from "../assets/imagenes/sculture1.png";
+import logo from "../assets/imagenes/logo_white.png";
+---
+
+<section>
+  <div class="flex-col flex w-full min-h-screen grow bg-[#1A1A1A]">
+    <div class="flex flex-col items-center text-white text-center">
+      <Image src={logo} alt="logo" class="h-90" />
+      <div class="py-10 text-2xl text-justify w-3/4">
+        Somos una marca de suplementos deportivos enfocada en ayudarte a
+        alcanzar tu mejor versión.
+        <p>
+          Seleccionamos productos de calidad, originales y con respaldo, para
+          personas que buscan rendimiento, energía y salud real.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="w-full grow bg-[#1A1A1A] flex min-h-screen">
+    <div class="flex">
+      <div class="flex flex-col items-center gap-10">
+        <div class="text-white justify-center text-center px-10 text-xl">
+          <div class="flex justify-center">
+            <h2 class="font-extrabold text-3xl">Por que SOMA</h2>
+            <p class="justify-center font-extrabold text-4xl text-green-500">
+              +
+            </p>
+            <p class="font-extrabold text-3xl">?</p>
+          </div>
+          <p class="text-center font-medium text-justify h-2/4">
+            SOMA+ nace de la palabra griega “soma”, que significa cuerpo. Es una
+            referencia directa al enfoque de nuestra marca: fortalecer, cuidar y
+            potenciar el cuerpo de forma inteligente y profesional
+          </p>
+        </div>
+        <Image class="w-3/4" src={escultura1} alt="escultura1" />
+      </div>
+      <div class="flex-col items-center text-white text-xl">
+        <Image class="w-3/4" src={escultura2} alt="escultura2" />
+        <p class="text-center font-medium text-justify mx-10">
+          SOMA+ nace de la palabra griega “soma”, que significa cuerpo. Es una
+          referencia directa al enfoque de nuestra marca: fortalecer, cuidar y
+          potenciar el cuerpo de forma inteligente y profesional
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

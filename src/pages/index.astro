@@ -1,10 +1,8 @@
 ---
 import "../styles/global.css";
-import { Image } from "astro:assets";
-import heroImage from "../assets/sculture1.webp";
-import logo from "../assets/logo_white.jpeg";
-import escultura2 from "../assets/sculture2.jpeg";
-import escultura3 from "../assets/sculture3.jpeg";
+import Bloque1 from "../components/bloque1.astro";
+import Bloque2 from "../components/bloque2.astro";
+import Separator from "../components/separator.astro";
 ---
 
 <html lang="en">
@@ -16,84 +14,12 @@ import escultura3 from "../assets/sculture3.jpeg";
     <title>Astro</title>
   </head>
   <body>
-    <div class="flex flex-col items-center font-[Open_sans]">
-      <!-- Bloque 1 -->
-      <div class="flex-col flex w-full min-h-screen grow bg-[#1A1A1A]">
-        <div class="p-2 flex gap-[20px] flex-wrap">
-          <div>
-            <p class="text-white text-3xl">
-              "Cultiva tu fuerza,<br />honra tu cuerpo"
-            </p>
-          </div>
-
-          <div class="grow"></div>
-
-          <div class="flex items-center">
-            <button class="rounded-xl p-3 bg-[#00b050] text-white text-2xl">
-              Pide por whatsapp
-            </button>
-          </div>
-        </div>
-        <div class="grow w-auto flex justify-center">
-          <Image src={heroImage} alt="Hero Image" class="w-auto" />
-        </div>
-      </div>
+    <div class="flex flex-col items-center">
+      <Bloque1 />
       <div class="flex-grow bg-green-500 h-32 w-full text-green-500"></div>
-      <!-- Bloque 2 -->
-      <div class="flex-col flex w-full min-h-screen grow bg-[#1A1A1A]">
-        <div
-          class="p-5 flex flex-col items-center text-white text-center space-y-4"
-        >
-          <Image src={logo} alt="logo" class="object-scale-down w-50" />
-          <div class="text-3xl">
-            <p>
-              Somos una marca de suplementos deportivos enfocada en ayudarte a
-              alcanzar tu mejor versión.
-            </p>
-            <p>
-              Seleccionamos productos de calidad, originales y con respaldo,
-              para personas que buscan rendimiento, energía y salud real.
-            </p>
-          </div>
-        </div>
-      </div>
+      <Bloque2 />
       <div class="flex-grow bg-green-500 h-32 w-full text-green-500"></div>
-
-      <!-- Bloque 3 -->
-      <div class="w-full grow bg-[#1A1A1A] flex min-h-screen">
-        <div class="flex">
-          <div class="flex flex-col items-center gap-10">
-            <div class="text-white justify-center text-center px-10 text-xl">
-              <h2 class="font-extrabold text-3xl">Porque SOMA+?</h2>
-              <p>
-                SOMA+ nace de la palabra griega “soma”, que significa cuerpo. Es
-                una referencia directa al enfoque de nuestra marca: fortalecer,
-                cuidar y potenciar el cuerpo de forma inteligente y profesional
-              </p>
-            </div>
-            <Image
-              class="object-scale-down w-2/4"
-              src={escultura3}
-              alt="escultura2"
-            />
-          </div>
-
-          <div class="flex-col gap-20 text-white text-xl">
-            <Image
-              class="object-scale-down w-2/4"
-              src={escultura2}
-              alt="escultura3"
-            />
-            <p class="text-center px-10">
-              SOMA+ nace de la palabra griega “soma”, que significa cuerpo. Es
-              una referencia directa al enfoque de nuestra marca: fortalecer,
-              cuidar y potenciar el cuerpo de forma inteligente y profesional
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="flex-grow bg-green-500 h-32 w-full text-green-500"></div>
-      <div class="w-[250px] grow">4</div>
+      <!-- <div class="w-[250px] grow">1</div> -->
     </div>
   </body>
 </html>
