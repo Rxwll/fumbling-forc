@@ -1,0 +1,49 @@
+---
+const { imagenes = [] } = Astro.props;
+import { Image } from "astro:assets";
+import {
+  Swiper,
+  SwiperWrapper,
+  SwiperSlide,
+  SwiperButtonPrev,
+  SwiperButtonNext,
+} from "astro-swiper";
+import "swiper/css";
+---
+
+<div class="">
+  <Swiper
+    uniqueClass="myswiper-thumbnail"
+    options={{
+      // check options at https://swiperjs.com/swiper-api
+      spaceBetween: 20,
+      slidesPerView: 4,
+      loop: true,
+      autoHeight: true,
+    }}
+  >
+    <SwiperWrapper>
+      {
+        imagenes.map((image) => (
+          <SwiperSlide>
+            <Image
+              src={image}
+              alt=""
+              class="w-full h-auto object-cover aspect-square "
+            />
+          </SwiperSlide>
+        ))
+      }
+    </SwiperWrapper>
+  </Swiper>
+</div>
+<style>
+  .myswiper-thumbnail .swiper-wrapper {
+  }
+
+  .myswiper-thumbnail .swiper-slide {
+  }
+
+  .myswiper-thumbnail .swiper-slide-thumb-active {
+  }
+</style>
