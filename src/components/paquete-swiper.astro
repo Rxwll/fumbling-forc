@@ -1,25 +1,50 @@
 ---
 const { imagenes = [] } = Astro.props;
 import { Image } from "astro:assets";
-import {
-  Swiper,
-  SwiperWrapper,
-  SwiperSlide,
-  SwiperButtonPrev,
-  SwiperButtonNext,
-} from "astro-swiper";
+import { Swiper, SwiperWrapper, SwiperSlide } from "astro-swiper";
 import "swiper/css";
 ---
 
-<div class="">
+<div>
+  <Swiper
+    uniqueClass="myswiper-main"
+    linkToThumbUniqueClass="myswiper-thumbnail"
+    options={{
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      loop: true,
+      autoplay: {
+        delay: 1400,
+        disableOnInteraction: false,
+        waitForTransition: false,
+      },
+    }}
+  >
+    <SwiperWrapper>
+      {
+        imagenes.map((image) => (
+          <SwiperSlide>
+            <Image
+              src={image}
+              alt=""
+              class="w-0 h-auto object-cover aspect-square "
+            />
+          </SwiperSlide>
+        ))
+      }
+    </SwiperWrapper>
+  </Swiper>
+
   <Swiper
     uniqueClass="myswiper-thumbnail"
     options={{
-      // check options at https://swiperjs.com/swiper-api
-      spaceBetween: 20,
+      spaceBetween: 10,
       slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
       loop: true,
-      autoHeight: true,
     }}
   >
     <SwiperWrapper>
@@ -37,13 +62,17 @@ import "swiper/css";
     </SwiperWrapper>
   </Swiper>
 </div>
+
 <style>
   .myswiper-thumbnail .swiper-wrapper {
+    box-sizing: border-box;
   }
 
   .myswiper-thumbnail .swiper-slide {
+    opacity: 0.4;
   }
 
   .myswiper-thumbnail .swiper-slide-thumb-active {
+    opacity: 1;
   }
 </style>
