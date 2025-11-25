@@ -1,78 +1,40 @@
 ---
-const { imagenes = [] } = Astro.props;
+const { imagenes = [], interval = 2000 } = Astro.props;
 import { Image } from "astro:assets";
-import { Swiper, SwiperWrapper, SwiperSlide } from "astro-swiper";
-import "swiper/css";
 ---
 
-<div>
-  <Swiper
-    uniqueClass="myswiper-main"
-    linkToThumbUniqueClass="myswiper-thumbnail"
-    options={{
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      loop: true,
-      autoplay: {
-        delay: 1400,
-        disableOnInteraction: false,
-        waitForTransition: false,
-      },
-    }}
-  >
-    <SwiperWrapper>
-      {
-        imagenes.map((image) => (
-          <SwiperSlide>
-            <Image
-              src={image}
-              alt=""
-              class="w-0 h-auto object-cover aspect-square "
-            />
-          </SwiperSlide>
-        ))
-      }
-    </SwiperWrapper>
-  </Swiper>
-
-  <Swiper
-    uniqueClass="myswiper-thumbnail"
-    options={{
-      spaceBetween: 10,
-      slidesPerView: 4,
-      freeMode: true,
-      watchSlidesProgress: true,
-      loop: true,
-    }}
-  >
-    <SwiperWrapper>
-      {
-        imagenes.map((image) => (
-          <SwiperSlide>
-            <Image
-              src={image}
-              alt=""
-              class="w-full h-auto object-cover aspect-square "
-            />
-          </SwiperSlide>
-        ))
-      }
-    </SwiperWrapper>
-  </Swiper>
+<div id="cards-stack" class="justify-center mx-auto relative flex">
+  {
+    imagenes.map((image, i) => (
+      <Image
+        src={image || "/placeholder.svg"}
+        alt={`Image ${i + 1}`}
+        class={`w-2/5 lg:w-1/6 opacity-50 h-auto aspect-square object-cover rounded-xl shadow-lg transition-all duration-300 ${i !== 0 ? `-ml-20 lg:-ml-10` : ""}`}
+        style={`z-index: ${i};`}
+        data-index={i}
+      />
+    ))
+  }
 </div>
 
-<style>
-  .myswiper-thumbnail .swiper-wrapper {
-    box-sizing: border-box;
+<script define:vars={{ interval }}>
+  let active = 0;
+  const cards = document.querySelectorAll("#cards-stack img");
+
+  function update() {
+    cards.forEach((card, index) => {
+      card.classList.remove("scale-110", "-mt-4", "opacity-100");
+      card.classList.add("scale-100", "opacity-50");
+      card.style.zIndex = index.toString();
+    });
+
+    const card = cards[active];
+    card.classList.remove("scale-100", "opacity-50");
+    card.classList.add("scale-110", "-mt-4", "opacity-100");
+    card.style.zIndex = "50";
+
+    active = (active + 1) % cards.length;
   }
 
-  .myswiper-thumbnail .swiper-slide {
-    opacity: 0.4;
-  }
-
-  .myswiper-thumbnail .swiper-slide-thumb-active {
-    opacity: 1;
-  }
-</style>
+  setInterval(update, interval);
+</script>
