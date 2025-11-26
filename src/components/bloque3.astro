@@ -1,4 +1,5 @@
 ---
+// Usa tus imports existentes
 import "../styles/global.css";
 import Bgpaquete1 from "../assets/imagenes/bg-paquete1.jpeg?url";
 import Bgpaquete2 from "../assets/imagenes/bg-paquete2.jpeg?url";
@@ -23,123 +24,133 @@ import pImg42 from "../assets/imagenes/paquete42.jpeg";
 import pImg43 from "../assets/imagenes/paquete43.jpeg";
 
 import ProductosSwiper from "./paquete-swiper.astro";
+
 const paquete1Imgs = [pImg11, pImg12, pImg13, pImg14];
 const paquete2Imgs = [pImg21, pImg22, pImg23];
 const paquete3Imgs = [pImg31, pImg32, pImg33];
 const paquete4Imgs = [pImg41, pImg42, pImg43];
+
+// Clases comunes (las del primer paquete)
+const sectionOuter = "flex flex-col h-screen w-full bg-cover bg-center";
+const commonInner = "items-center justify-center my-auto mx-10 space-y-10";
+const tituloCls = "w-full text-center font-extrabold text-6xl";
+const paragraphWrapper =
+  "flex flex-col text-xl lg:text-3xl space-y-10 items-center justify-center text-justify";
+const pMainCls = "font-medium w-2/3 mx-auto lg:w-1/2";
+const pFocusCls =
+  "font-semibold w-8/9 lg:w-1/2 mx-auto items-center justify-center";
+const bulletsWrapper =
+  "w-9/10 justify-center items-center space-x-10 mx-auto flex flex-col lg:flex-row";
+const listCls = "text-xl lg:text-2xl font-medium list-disc space-y-1 pl-6";
+const priceCls = "font-extrabold text-2xl lg:text-3xl";
+
+const paquetes = [
+  {
+    bg: Bgpaquete1,
+    titulo: "Paquete Potencia Total",
+    main: "Eleva tu entrenamiento al siguiente nivel con energía explosiva y fuerza real. Incluye bebida energética GRATIS por lanzamiento.",
+    focus: "Enfoque: Fuerza explosiva y energía sostenida",
+    imgs: paquete1Imgs,
+    bullets: [
+      "Creatina monohidratada (3RUN Creatina Monohidratada)",
+      "Pre-entreno en polvo (Essential Pre-Workout)",
+      "Electrolitos o BCAA (BPI Sports Best BCAA)",
+      "Extra: 1 bebida energética Ghost o CBUM (gratis por lanzamiento)",
+    ],
+    price: "De: $1,780 \n A: $1,550",
+    color: "text-white",
+  },
+  {
+    bg: Bgpaquete2,
+    titulo: "Paquete Definicion Plus",
+    main: "Esculpe tu figura y mantén la energía alta. Además, recibe una bebida refrescante para tu rutina sin remordimientos.",
+    focus: "Enfoque: Pérdida de grasa y mantenimiento de músculo",
+    imgs: paquete2Imgs,
+    bullets: [
+      "1 Proteína isolatada (baja en carbos) (ISOPURE)",
+      "Quemadores suave (Metabólico) (Phenomenal PM)",
+      "CLA (quema grasa) (CLA en cápsulas)",
+      "Extra: 1 bebida sin azúcar tipo Ghost (para energía sin calorías)",
+    ],
+    price: "De: $2,550 \n A: $2,249",
+    color: "text-black",
+  },
+  {
+    bg: Bgpaquete3,
+    titulo: "Paquete Empieza Fuerte",
+    main: "¡La mejor manera de arrancar! Incluye los esenciales para tu progreso y una galleta deliciosa para motivarte.",
+    focus: " Enfoque: Principiantes que inician en el mundo del entrenamiento",
+    imgs: paquete3Imgs,
+    bullets: [
+      "Proteína whey (Mutant Whey)",
+      "Creatina",
+      "Guía digital de uso básico (PDF con info útil para principiantes)",
+      "Extra: 1 galleta proteica de bienvenida (FIBR)",
+    ],
+    price: "De: $1,593 \n A: $1,400",
+    color: "text-white",
+  },
+  {
+    bg: Bgpaquete4,
+    titulo: "Paquete Masa y Poder",
+    main: "La combinación perfecta para subir de peso con calidad. Además, llévate un snack saludable para que nunca te falten calorías limpias.",
+    focus: "Enfoque: Volumen y ganancia muscular",
+    imgs: paquete4Imgs,
+    bullets: [
+      "Proteína tipo gainer (alta en carbos) (Mass Phorm de Dragon Pharma)",
+      "Creatina (Creatine de GAT Sport)",
+      "Multivitamínico básico (Men’s Multi-Test)",
+      "Extra: 1 galleta proteica (Muscle Sandwich) por cada paquete completo",
+    ],
+    price: "De: $1,780 \n A: $1,550",
+    color: "text-white",
+  },
+];
 ---
 
 <section class="w-full">
-  <div
-    class="flex flex-col h-auto w-full bg-cover bg-center"
-    style={`background-image: url(${Bgpaquete1});`}
-  >
-    <div class="text-white items-center m-10 space-y-10">
-      <h1 class="w-full text-center font-bold text-2xl">
-        Paquete Potencia Total
-      </h1>
-      <p class="font-medium">
-        Eleva tu entrenamiento al siguiente nivel con energía explosiva y fuerza
-        real. Incluye bebida energética GRATIS por lanzamiento.
-      </p>
-      <ProductosSwiper imagenes={paquete1Imgs} />
-      <div class="flex flex-row">
-        <ul role="list" class="font-medium list-disc space-y-1 pl-6">
-          <li>Pre-entreno en polvo (Essential Pre-Workout)</li>
-          <li>Electrolitos o BCAA (BPI Sports Best BCAA)</li>
-          <li>
-            Extra: 1 bebida energética Ghost o CBUM (gratis por lanzamiento)
-          </li>
-        </ul>
-        <div class="flex-grow"></div>
-        <p class="font-extrabold lg:text-2xl p-5">
-          De: $1,780 <br /> A: $1,550
-        </p>
-      </div>
-    </div>
-  </div>
+  {
+    paquetes.map((p) => (
+      <div class={sectionOuter} style={`background-image: url(${p.bg});`}>
+        <div class={`${commonInner} ${p.color}`}>
+          <h1 class={tituloCls}>{p.titulo}</h1>
 
-  <div
-    class="flex h-auto flex-col w-full bg-cover bg-center"
-    style={`background-image: url(${Bgpaquete2});`}
-  >
-    <div class="text-white items-center m-10 space-y-10">
-      <h1 class="w-full text-center font-bold text-2xl">
-        Paquete Definicion Plus
-      </h1>
+          <div class={paragraphWrapper}>
+            <p class={pMainCls}>{p.main}</p>
+            {p.focus ? <p class={pFocusCls}>{p.focus}</p> : null}
+          </div>
 
-      <p class="font-medium font-center">
-        Esculpe tu figura y mantén la energía alta. Además, recibe una bebida
-        refrescante para tu rutina sin remordimientos.
-      </p>
-      <ProductosSwiper imagenes={paquete2Imgs} />
-      <div class="flex flex-row">
-        <ul role="list" class="font-medium list-disc space-y-1 pl-6">
-          <li>Creatina monohidratada (3RUN Creatina Monohidratada)</li>
-          <li>Pre-entreno en polvo (Essential Pre-Workout)</li>
-          <li>Electrolitos o BCAA (BPI Sports Best BCAA)</li>
-          <li>
-            Extra: 1 bebida energética Ghost o CBUM (gratis por lanzamiento)
-          </li>
-        </ul>
-        <div class="flex-grow"></div>
-        <p class="text-4xl font-extrabold py-10">De: $1,780 <br /> A: $1,550</p>
-      </div>
-    </div>
-  </div>
+          <ProductosSwiper imagenes={p.imgs} />
 
-  <div
-    class="flex flex-col h-auto w-full bg-cover bg-center"
-    style={`background-image: url(${Bgpaquete3});`}
-  >
-    <div class="text-white items-center m-10 space-y-10">
-      <h1 class="w-full text-center font-bold text-2xl">
-        Paquete Potencia Total
-      </h1>
-      <p class="font-medium">
-        Eleva tu entrenamiento al siguiente nivel con energía explosiva y fuerza
-        real. Incluye bebida energética GRATIS por lanzamiento.
-      </p>
-      <ProductosSwiper imagenes={paquete3Imgs} />
-      <div class="flex flex-row">
-        <ul role="list" class="font-medium list-disc space-y-1 pl-6">
-          <li>Creatina monohidratada (3RUN Creatina Monohidratada)</li>
-          <li>Pre-entreno en polvo (Essential Pre-Workout)</li>
-          <li>Electrolitos o BCAA (BPI Sports Best BCAA)</li>
-          <li>
-            Extra: 1 bebida energética Ghost o CBUM (gratis por lanzamiento)
-          </li>
-        </ul>
-        <div class="flex-grow"></div>
-        <p class="text-4xl font-extrabold py-10">De: $1,780 <br /> A: $1,550</p>
+          <div class={bulletsWrapper}>
+            <ul role="list" class={listCls}>
+              {p.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+            <p class={priceCls} style="white-space: pre-line;">
+              {p.price}
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    ))
+  }
   <div
-    class="flex flex-col h-auto w-full bg-cover bg-center"
-    style={`background-image: url(${Bgpaquete4});`}
+    class="p-10 space-y-20 items-center lg:justify-center text-white bg-[#1A1A1A] w-full flex-col flex h-screen"
   >
-    <div class="text-white items-center m-10 space-y-10">
-      <h1 class="w-full text-center font-bold text-2xl">
-        Paquete Potencia Total
-      </h1>
-      <p class="font-medium">
-        Eleva tu entrenamiento al siguiente nivel con energía explosiva y fuerza
-        real. Incluye bebida energética GRATIS por lanzamiento.
-      </p>
-      <ProductosSwiper imagenes={paquete4Imgs} />
-      <div class="flex flex-row">
-        <ul role="list" class="font-medium list-disc space-y-1 pl-6">
-          <li>Creatina monohidratada (3RUN Creatina Monohidratada)</li>
-          <li>Pre-entreno en polvo (Essential Pre-Workout)</li>
-          <li>Electrolitos o BCAA (BPI Sports Best BCAA)</li>
-          <li>
-            Extra: 1 bebida energética Ghost o CBUM (gratis por lanzamiento)
-          </li>
-        </ul>
-        <div class="flex-grow"></div>
-        <p class="text-4xl font-extrabold py-10">De: $1,780 <br /> A: $1,550</p>
-      </div>
-    </div>
+    <h1
+      class="text-4xl w-2/3 lg:w-1/2 text-center lg:text-6xl font-bold border-b-green-500 border-b-5 p-5"
+    >
+      Nota Importante
+    </h1>
+    <p class="font-medium text-justify text-3xl w-5/6 lg:w-1/2">
+      Todos los precios mostrados en este catálogo están sujetos a cambios sin
+      previo aviso. La disponibilidad de productos puede variar según
+      inventario.
+      <br />
+      Para confirmar existencias, precios actualizados o hacer un pedido, comunícate
+      directamente con nosotros a través de WhatsApp o redes sociales.
+    </p>
   </div>
 </section>
