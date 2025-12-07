@@ -1,0 +1,105 @@
+---
+// Header.astro - Header sticky para Astro
+---
+
+<header
+  id="header"
+  class="sticky top-0 z-150 bg-black backdrop-blur-mdborder-b transition-all duration-300"
+>
+  <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="text-2xl font-bold text-white"> </a>
+
+    <ul class="hidden md:flex items-center gap-8">
+      <!-- <li> -->
+      <!--   <a href="/" class="text-gray-300 hover:text-white transition">Inicio</a> -->
+      <!-- </li> -->
+      <!-- <li> -->
+      <!--   <a href="/about" class="text-gray-300 hover:text-white transition" -->
+      <!--     >Acerca</a -->
+      <!--   > -->
+      <!-- </li> -->
+      <!-- <li> -->
+      <!--   <a href="/servicios" class="text-gray-300 hover:text-white transition" -->
+      <!--     >Servicios</a -->
+      <!--   > -->
+      <!-- </li> -->
+      <li>
+        <a href="/contacto" class="text-gray-300 hover:text-white transition"
+          >Pide Por Phatsapp</a
+        >
+      </li>
+    </ul>
+
+    <button id="mobile-menu-btn" class="md:hidden text-white">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10">
+    <ul class="container mx-auto px-4 py-4 space-y-2">
+      <li>
+        <a href="/" class="block py-2 text-gray-300 hover:text-white transition"
+          >Inicio</a
+        >
+      </li>
+      <li>
+        <a
+          href="/about"
+          class="block py-2 text-gray-300 hover:text-white transition">Acerca</a
+        >
+      </li>
+      <li>
+        <a
+          href="/servicios"
+          class="block py-2 text-gray-300 hover:text-white transition"
+          >Servicios</a
+        >
+      </li>
+      <li>
+        <a
+          href="/contacto"
+          class="block py-2 text-gray-300 hover:text-white transition"
+          >Contacto</a
+        >
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  // Toggle mobile menu
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileMenuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+
+  // Add shadow on scroll
+  const header = document.getElementById("header");
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 10) {
+      header?.classList.add("shadow-sm");
+    } else {
+      header?.classList.remove("shadow-sm");
+    }
+
+    lastScroll = currentScroll;
+  });
+</script>

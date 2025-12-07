@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
 import Bloque1 from "../components/bloque1.astro";
 import Bloque2 from "../components/bloque2.astro";
 import Bloque3 from "../components/bloque3.astro";
@@ -14,13 +16,15 @@ import Bloque3 from "../components/bloque3.astro";
     <title>Astro</title>
   </head>
   <body>
+    <Header />
     <div class="flex flex-col items-center">
       <Bloque1 />
       <div class="flex-grow bg-green-500 h-32 w-full text-green-500"></div>
       <Bloque2 />
       <div class="flex-grow bg-green-500 h-32 w-full text-green-500"></div>
       <Bloque3 />
-      <div class="flex-grow bg-green-500 h-32 w-full text-green-500"></div>
+      <!-- <div class="flex-grow bg-green-500 h-32 w-full text-green-500"></div> -->
     </div>
+    <Footer />
   </body>
 </html>

@@ -108,6 +108,23 @@ const paquetes = [
 ];
 ---
 
+<div
+  class="p-10 space-y-20 items-center lg:justify-center text-white bg-[#1A1A1A] w-full flex-col flex h-screen"
+>
+  <h1
+    class="text-4xl w-2/3 lg:w-1/2 text-center lg:text-6xl font-bold border-b-green-500 border-b-5 p-5"
+  >
+    Nota Importante
+  </h1>
+  <p class="font-medium text-justify text-3xl w-5/6 lg:w-1/2">
+    Todos los precios mostrados en este catálogo están sujetos a cambios sin
+    previo aviso. La disponibilidad de productos puede variar según inventario.
+    <br />
+    Para confirmar existencias, precios actualizados o hacer un pedido, comunícate
+    directamente con nosotros a través de WhatsApp o redes sociales.
+  </p>
+</div>
+
 <section class="w-full">
   {
     paquetes.map((p) => (
@@ -136,21 +153,4 @@ const paquetes = [
       </div>
     ))
   }
-  <div
-    class="p-10 space-y-20 items-center lg:justify-center text-white bg-[#1A1A1A] w-full flex-col flex h-screen"
-  >
-    <h1
-      class="text-4xl w-2/3 lg:w-1/2 text-center lg:text-6xl font-bold border-b-green-500 border-b-5 p-5"
-    >
-      Nota Importante
-    </h1>
-    <p class="font-medium text-justify text-3xl w-5/6 lg:w-1/2">
-      Todos los precios mostrados en este catálogo están sujetos a cambios sin
-      previo aviso. La disponibilidad de productos puede variar según
-      inventario.
-      <br />
-      Para confirmar existencias, precios actualizados o hacer un pedido, comunícate
-      directamente con nosotros a través de WhatsApp o redes sociales.
-    </p>
-  </div>
 </section>
